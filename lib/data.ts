@@ -1,0 +1,103 @@
+import { Cross, Gift, Utensils, Briefcase, Gem, Flower2 } from "lucide-react"
+
+export const categories = [
+    {
+        name: "Christian Jewellery",
+        description: "Necklaces, bracelets, and rings",
+        icon: Gem,
+        href: "/shop?category=Christian Jewellery",
+        featured: true,
+    },
+    {
+        name: "Home Décor",
+        description: "Elegant pieces for a faithful home",
+        icon: Flower2,
+        href: "/shop?category=Home Décor",
+        featured: false,
+    },
+    {
+        name: "Catering",
+        description: "Delicious food for your fellowship",
+        icon: Utensils,
+        href: "/shop?category=Catering",
+        featured: false,
+    },
+    {
+        name: "Gift Hampers",
+        description: "Curated bundles of joy",
+        icon: Gift,
+        href: "/shop?category=Gift Hampers",
+        featured: true,
+    },
+    {
+        name: "Office Items",
+        description: "Faith-inspired desk accessories",
+        icon: Briefcase,
+        href: "/shop?category=Office Items",
+        featured: false,
+    },
+    {
+        name: "Church Supplies",
+        description: "Essentials for worship",
+        icon: Cross,
+        href: "/shop?category=Church Supplies",
+        featured: false,
+    },
+]
+
+export const products = [
+    {
+        id: 1,
+        name: "Cross Pendant Necklace",
+        category: "Christian Jewellery",
+        price: 45.00,
+        image: "/products/cross-necklace.jpg",
+        description: "A beautiful sterling silver cross pendant, a simple yet profound statement of faith.",
+        badge: "Best Seller",
+    },
+    {
+        id: 2,
+        name: "Faith Hope Love Bracelet",
+        category: "Christian Jewellery",
+        price: 32.00,
+        image: "/products/bracelet.jpg",
+        description: "Delicate bracelet featuring 'Faith', 'Hope', and 'Love' charms, reminding you of the greatest virtues.",
+        badge: null,
+    },
+    {
+        id: 3,
+        name: "Preserved Rose Arrangement",
+        category: "Home Décor",
+        price: 68.00,
+        image: "/products/roses.jpg",
+        description: "An elegant arrangement of preserved roses that last for years, bringing beauty to any room.",
+        badge: "New",
+    },
+    {
+        id: 4,
+        name: "Scripture Desk Plaque",
+        category: "Office Items",
+        price: 28.00,
+        image: "/products/desk-plaque.jpg",
+        description: "A wooden desk plaque engraved with an encouraging scripture to uplift you during your workday.",
+        badge: null,
+    },
+    {
+        id: 5,
+        name: "Sunday Feast Platter",
+        category: "Catering",
+        price: 85.00,
+        image: "/products/feast.jpg",
+        description: "A generous platter of assorted finger foods, perfect for small group gatherings and fellowship.",
+        badge: "Popular",
+    },
+    {
+        id: 6,
+        name: "Blessing Gift Hamper",
+        category: "Gift Hampers",
+        price: 120.00,
+        image: "/products/hamper.jpg",
+        description: "A luxurious hamper filled with gourmet treats, a candle, and a devotional book.",
+        badge: "Featured",
+    },
+]
