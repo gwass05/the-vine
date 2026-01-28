@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 
 import { useState, useEffect, use } from "react" // Added 'use'
 import { useAuth } from "@/contexts/auth-context"
+import type { OrderWithItems } from "@/lib/types";
 
 type OrderDetailsPageProps = {
   params: {
@@ -24,7 +25,7 @@ export default function OrderDetailsPage({ params: paramsProp }: OrderDetailsPag
 
   const router = useRouter()
   const { user, loading: authLoading } = useAuth()
-  const [order, setOrder] = useState<any | null>(null)
+  const [order, setOrder] = useState<OrderWithItems | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
