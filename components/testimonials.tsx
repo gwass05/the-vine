@@ -23,7 +23,7 @@ const testimonials = [
     },
     {
         id: 3,
-        quote: "CYC Kingdom catered our church fellowship lunch and the food was incredible! Everyone asked where we got such delicious meals. Will definitely order again.",
+        quote: "The Vine catered our church fellowship lunch and the food was incredible! Everyone asked where we got such delicious meals. Will definitely order again.",
         author: "Pastor Ruth N.",
         location: "Durban",
         rating: 5,

@@ -9,7 +9,7 @@ export default function AboutPage() {
 
                 <div className="prose prose-stone dark:prose-invert mx-auto text-lg leading-relaxed text-muted-foreground">
                     <p className="mb-6">
-                        Welcome to CYC Kingdom Code Studios. We are more than just a store; we are a ministry dedicated to spreading the joy and love of Christ through our creations.
+                        Welcome to The Vine. We are more than just a store; we are a ministry dedicated to spreading the joy and love of Christ through our creations.
                     </p>
                     <p className="mb-6">
                         Founded in 2020, our mission has been to serve the Kingdom of God by providing high-quality, faith-inspired products that bless your home and heart. Whether it's a piece of jewellery that serves as a daily reminder of God's love, or a catered meal that brings families together, everything we do is rooted in faith.

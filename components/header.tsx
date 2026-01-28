@@ -78,7 +78,7 @@ export function Header() {
                     <Link href="/" className="flex items-center gap-2">
                         <Image
                             src="/logo.jpg"
-                            alt="CYC Kingdom Studios"
+                            alt="The Vine"
                             width={240}
                             height={120}
                             className="h-16 w-auto object-contain dark:invert lg:h-24 mix-blend-multiply dark:mix-blend-normal"

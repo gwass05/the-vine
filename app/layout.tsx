@@ -16,7 +16,7 @@ const _lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: 'CYC Kingdom Code Studios | Faith-Inspired Gifts & Décor',
+  title: 'The Vine | Faith-Inspired Gifts & Décor',
   description: 'Discover elegant Christian jewellery, home décor, catering services, and curated gift hampers. Faith-inspired creations for every occasion.',
   generator: 'v0.app',
   icons: {
