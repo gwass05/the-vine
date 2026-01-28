@@ -145,9 +145,9 @@ export default function OrdersPage() {
                                         </div>
                                     </div>
                                     <div className="bg-muted/30 px-8 py-3 flex justify-end group-hover:bg-muted/50 transition-colors">
-                                        <button className="text-xs font-bold text-primary flex items-center gap-1 uppercase tracking-widest">
+                                        <Link href={`/orders/${order.id}`} className="text-xs font-bold text-primary flex items-center gap-1 uppercase tracking-widest">
                                             Order Details <ChevronRight className="h-3 w-3" />
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             ))}
