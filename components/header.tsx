@@ -75,15 +75,20 @@ export function Header() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-20 items-center justify-between lg:h-28">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2">
-                        <Image
-                            src="/logo.jpg"
-                            alt="The Vine"
-                            width={240}
-                            height={120}
-                            className="h-16 w-auto object-contain dark:invert lg:h-24 mix-blend-multiply dark:mix-blend-normal"
-                            priority
-                        />
+                    <Link href="/" className="flex items-center gap-3">
+                        <div className="rounded-md bg-white/95 p-1 shadow-sm ring-1 ring-border/40">
+                            <Image
+                                src="/the-vine-logo.jpg"
+                                alt="The Vine logo"
+                                width={240}
+                                height={120}
+                                className="h-14 w-auto object-contain sm:h-16 lg:h-24"
+                                priority
+                            />
+                        </div>
+                        <span className="font-serif text-lg sm:text-3xl lg:text-4xl tracking-wide text-foreground leading-none">
+                            The Vine
+                        </span>
                     </Link>
 
                     {/* Desktop Navigation */}
