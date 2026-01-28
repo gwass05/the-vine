@@ -1,12 +1,13 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useTransition } from "react"
 import { useRouter } from "next/navigation"
 import { ProtectedRoute } from "@/components/protected-route"
 import { useAuth } from "@/contexts/auth-context"
 import { useCartStore, useTotalPrice } from "@/lib/store"
 import { Button } from "@/components/ui/button"
 import { createOrder } from "@/lib/supabase/orders"
+import { createStripeCheckoutSession } from "./actions"
 import { CheckCircle2, Loader2, ArrowRight, ShoppingBag, CreditCard } from "lucide-react"
 import Link from "next/link"
 
@@ -16,6 +17,7 @@ export default function CheckoutPage() {
     const { items, clearCart } = useCartStore()
     const totalPrice = useTotalPrice()
     const [isPlacingOrder, setIsPlacingOrder] = useState(false)
+    const [isStripeRedirecting, startStripeRedirect] = useTransition()
     const [orderSuccess, setOrderSuccess] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const [mounted, setMounted] = useState(false)
@@ -37,15 +39,31 @@ export default function CheckoutPage() {
                 totalPrice
             )
 
-            if (orderError) {
-                setError(orderError)
-            } else {
-                setOrderSuccess(true)
-                clearCart() // Clear local cart after successful order
+            if (orderError || !order) {
+                setError(orderError ?? "Failed to create order.")
+                setIsPlacingOrder(false)
+                return
             }
+
+            startStripeRedirect(async () => {
+                try {
+                    const { url } = await createStripeCheckoutSession(order.id, totalPrice)
+
+                    if (!url) {
+                        setError("Failed to start payment session.")
+                        setIsPlacingOrder(false)
+                        return
+                    }
+
+                    clearCart()
+                    window.location.href = url
+                } catch {
+                    setError("An unexpected error occurred while redirecting to payment.")
+                    setIsPlacingOrder(false)
+                }
+            })
         } catch (err) {
             setError("An unexpected error occurred while placing your order.")
-        } finally {
             setIsPlacingOrder(false)
         }
     }
@@ -53,7 +71,7 @@ export default function CheckoutPage() {
     if (!mounted) return null
 
     if (orderSuccess) {
-        return (
+        if (orderSuccess) {
             <div className="min-h-screen bg-background pt-20 lg:pt-28 flex items-center justify-center">
                 <div className="max-w-md w-full px-6 py-12 bg-card rounded-2xl border border-border shadow-sm text-center">
                     <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary mb-6">
@@ -75,7 +93,7 @@ export default function CheckoutPage() {
                     </div>
                 </div>
             </div>
-        )
+        }
     }
 
     if (items.length === 0) {
@@ -175,10 +193,10 @@ export default function CheckoutPage() {
                                         disabled={isPlacingOrder}
                                         onClick={handlePlaceOrder}
                                     >
-                                        {isPlacingOrder ? (
+                                        {isPlacingOrder || isStripeRedirecting ? (
                                             <>
                                                 <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                                                Processing Order...
+                                                Redirecting to Stripe...
                                             </>
                                         ) : (
                                             <>
